@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 445896}
   - component: {fileID: 3387004}
   - component: {fileID: 2376808}
+  - component: {fileID: 1948196894107212823}
   m_Layer: 0
   m_Name: Scifi Rock Orange 3
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1948196894107212823
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 0b836da1f4aec2741b2c0cb4d5cf6429, type: 3}

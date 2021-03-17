@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 481514}
   - component: {fileID: 3314258}
   - component: {fileID: 2381416}
+  - component: {fileID: 2267258957256436198}
   m_Layer: 0
   m_Name: Scifi Rock Purple 3
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2267258957256436198
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6728c94b0c6d6374e9105edf435a5391, type: 3}

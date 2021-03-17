@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 491850}
   - component: {fileID: 3350956}
   - component: {fileID: 2381360}
+  - component: {fileID: -4115922951760805642}
   m_Layer: 0
   m_Name: Scifi Rock Green 4
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-4115922951760805642
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 14786adffe5d1ed438b222d971b8f924, type: 3}
