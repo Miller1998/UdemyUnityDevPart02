@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41eec3bf759e51c48b1049f674608e4f, type: 3}
-  m_Name: Player02
+  m_Script: {fileID: 11500000, guid: 54a89b64b0663ed4d96f2aa4cbbc274c, type: 3}
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  characterName: Zig
-  charDesc: Ninja 02
-  hp: 6
-  movementSpeed: 50
-  charModel: {fileID: 198222, guid: 6f364a339d7ab5645a9a4767e2c68c1d, type: 3}
+  itemName: (Heal)Item
+  itemDesc: Healing Player
+  additionalHP: 2
+  movementSpeed: 20
+  itemModel: {fileID: 197578, guid: 9d4155e36d16c434c82f37584f006c5c, type: 3}
+  destroySFX: {fileID: 0}

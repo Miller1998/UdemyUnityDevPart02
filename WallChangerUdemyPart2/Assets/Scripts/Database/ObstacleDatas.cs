@@ -27,7 +27,7 @@ namespace Obstacles
 
         #region GameObject_Caller
 
-        [Header("SpaceShip Model")]
+        [Header("Object Model")]
         public GameObject itemModel;
         public AudioClip destroySFX;
 

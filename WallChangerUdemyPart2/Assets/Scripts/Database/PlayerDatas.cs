@@ -19,7 +19,7 @@ namespace CharacterDatas
         #region Player_Abilities
 
         [Header("Space Ship Abilities")]
-        //public int hp;
+        public int hp;
         public float movementSpeed;
 
         #endregion

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41eec3bf759e51c48b1049f674608e4f, type: 3}
-  m_Name: Player01
+  m_Script: {fileID: 11500000, guid: 54a89b64b0663ed4d96f2aa4cbbc274c, type: 3}
+  m_Name: Enemy
   m_EditorClassIdentifier: 
-  characterName: Akai
-  charDesc: Ninja 01
-  hp: 5
+  itemName: Shuriken(Enemy)
+  itemDesc: Shuriken that can damage your player
+  additionalHP: -3
   movementSpeed: 30
-  charModel: {fileID: 143654, guid: 29497e1a2d98bb243b5269f07c8f8801, type: 3}
+  itemModel: {fileID: 148258, guid: 315ec8f592984544584a6993bc4e07dd, type: 3}
+  destroySFX: {fileID: 0}
