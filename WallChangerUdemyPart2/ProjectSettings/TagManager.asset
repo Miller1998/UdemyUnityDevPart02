@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Enemy
   - Heal
+  - WallKiller
   layers:
   - Default
   - TransparentFX

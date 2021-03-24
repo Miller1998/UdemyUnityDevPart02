@@ -38,9 +38,14 @@ public class Player : MonoBehaviour
     private float speed;
     [SerializeField]
     private int playerHP;
-    
+    [SerializeField]
+    private int scoring;
+    [SerializeField]
+    private int timeRange;
+
     [Header("GameObject Caller")]
     private GameObject charPrefabs;
+    public IngameGameManager gameManager;
     
     #endregion
 
@@ -54,6 +59,9 @@ public class Player : MonoBehaviour
     void Awake()
     {
 
+        Time.timeScale = 1;
+        scoring = 0;
+        gameManager.timer = (float)timeRange;
         characters = Resources.LoadAll("Database/Character", typeof(PlayerDatas)).Cast<PlayerDatas>().ToArray();
         obstacles = Resources.LoadAll("Database/Obstacle", typeof(ObstacleDatas)).Cast<ObstacleDatas>().ToArray();
         //set the character (you can put it on the choosing character menu)
@@ -75,16 +83,27 @@ public class Player : MonoBehaviour
         PlayerMovement();
         // Scoring by timer
 
-        if (playerHP == 0 || playerHP <= 0)//if player HP is at 0 or under it then game over
+        NotTouchingWallTimer();
+
+        if (playerHP <= 0)//if player HP is at 0 or under it then game over
         {
             Destroy(charPrefabs);//destroy game obj
-            Time.timeScale = 0;//stop the game
-            //show GameOver UI
-
+            //Time.timeScale = 0;//stop the game
         }
         else
         {
-
+            //scoring mode
+            //sometimes this update can't be stopped by Time.timescale = 0 
+            //so we must do this
+            if (Time.timeScale == 0)
+            {
+                return;
+            }
+            else
+            {
+                scoring++;
+                PlayerPrefs.SetInt("TotalScore", scoring);
+            }
         }
 
     }
@@ -99,8 +118,9 @@ public class Player : MonoBehaviour
         mainCamera.transform.Translate(Vector3.up * Time.deltaTime * speed);
         obstacleSpawner.transform.Translate(Vector3.up * Time.deltaTime * speed);
 
+        //i hope we can change this to be the Mathf.Clamp
         if (left == true && this.transform.position.x >= xMin)
-        {
+        {   
             this.transform.Translate(Vector3.left * Time.deltaTime * movementSpeed);
         }
         else if (right == true && this.transform.position.x <= xMax)
@@ -127,6 +147,7 @@ public class Player : MonoBehaviour
 
                 movementSpeed = characters[i].movementSpeed;
                 playerHP = characters[i].hp;
+                PlayerPrefs.SetInt("PlayerHP", playerHP);
 
                 //instantiate character model inside this code place parent and it's position
                 charPrefabs = (GameObject)Instantiate(characters[i].charModel, this.transform.position, Quaternion.identity, this.transform);
@@ -135,6 +156,17 @@ public class Player : MonoBehaviour
 
         }
 
+    }
+
+    void NotTouchingWallTimer()
+    {
+        gameManager.timer -= Time.deltaTime;
+
+        if (gameManager.timer <= 0)
+        {
+            playerHP = 0;
+            PlayerPrefs.SetInt("PlayerHP", playerHP);
+        }
     }
 
     #endregion
@@ -166,6 +198,18 @@ public class Player : MonoBehaviour
 
             }
         }
+
+        if (trigger.tag == "Wall")
+        {
+            gameManager.timer += (float)timeRange;
+        }
+
+        if (trigger.tag == "WallKiller")
+        {
+            playerHP = 0;
+            PlayerPrefs.SetInt("PlayerHP", playerHP);
+        }
+
     }
 
     void OnCollisionEnter(Collision col)//collision = collision
