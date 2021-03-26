@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public ObstacleDatas[] obstacles;
     public GameObject mainCamera;
     public GameObject obstacleSpawner;
+    public ParticleSystem destroyPlayerEffect;
+    public AudioSource sfx;
 
     [Header("Player Chooser")]
     public string chooseChar;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
 
     [Header("GameObject Caller")]
     private GameObject charPrefabs;
+    public AudioClip destroyedPlayer;
     public IngameGameManager gameManager;
     
     #endregion
@@ -89,6 +92,23 @@ public class Player : MonoBehaviour
         {
             Destroy(charPrefabs);//destroy game obj
             //Time.timeScale = 0;//stop the game
+
+            //destroyPlayerEffect.Play();
+            //but it can't be played when timescale is equal to 0
+            //if you want to use this script u must change the particle system properties Delta Time to Unscaled
+            //or you can use this too :
+            if (Time.timeScale == 0)
+            {
+                destroyPlayerEffect.Simulate(Time.unscaledDeltaTime, true, false);
+                sfx.ignoreListenerPause = true;
+                sfx.ignoreListenerVolume = true;
+            }
+            else
+            {
+                sfx.ignoreListenerPause = false;
+                sfx.ignoreListenerVolume = false;
+            }
+            
         }
         else
         {
@@ -148,6 +168,7 @@ public class Player : MonoBehaviour
                 movementSpeed = characters[i].movementSpeed;
                 playerHP = characters[i].hp;
                 PlayerPrefs.SetInt("PlayerHP", playerHP);
+                destroyedPlayer = characters[i].destroyedSFX;
 
                 //instantiate character model inside this code place parent and it's position
                 charPrefabs = (GameObject)Instantiate(characters[i].charModel, this.transform.position, Quaternion.identity, this.transform);
@@ -183,6 +204,7 @@ public class Player : MonoBehaviour
                 playerHP = playerHP + obstacles[i].additionalHP;
                 PlayerPrefs.SetInt("PlayerHP", playerHP);
                 Debug.Log("Player HP = " + playerHP);
+                sfx.PlayOneShot(obstacles[i].destroySFX);
                 
                 Destroy(trigger.gameObject);
 
@@ -193,6 +215,7 @@ public class Player : MonoBehaviour
                 playerHP = playerHP + obstacles[i].additionalHP;
                 PlayerPrefs.SetInt("PlayerHP", playerHP);
                 Debug.Log("Player HP = " + playerHP);
+                sfx.PlayOneShot(obstacles[i].destroySFX);
 
                 Destroy(trigger.gameObject);
 

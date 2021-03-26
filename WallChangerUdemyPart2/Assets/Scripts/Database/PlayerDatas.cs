@@ -28,8 +28,8 @@ namespace CharacterDatas
 
         [Header("SpaceShip Model")]
         public GameObject charModel;
-        /*public AudioClip jumpSFX;
-        public AudioClip destroyedSFX;*/
+        //public AudioClip jumpSFX;
+        public AudioClip destroyedSFX;
 
         #endregion
     }

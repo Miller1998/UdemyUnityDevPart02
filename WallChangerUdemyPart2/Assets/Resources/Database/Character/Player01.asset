@@ -17,3 +17,4 @@ MonoBehaviour:
   hp: 5
   movementSpeed: 30
   charModel: {fileID: 143654, guid: 29497e1a2d98bb243b5269f07c8f8801, type: 3}
+  destroyedSFX: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}

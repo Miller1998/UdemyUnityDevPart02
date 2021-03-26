@@ -12,6 +12,7 @@ public class IngameGameManager : MonoBehaviour
     public Text textTimer;
     public Text topScoreText;
     public Text lastScore;
+    public Player player;
 
     [Header("Game Object Caller")]
     public GameObject gameOverUI;
@@ -50,6 +51,8 @@ public class IngameGameManager : MonoBehaviour
             lastScore.text = "Last Score : " + score.ToString();
             topScoreText.text = "TOP SCORE : " + topScore;
             TopScore();
+            
+            AudioSource.PlayClipAtPoint(player.destroyedPlayer, player.transform.position);
 
             Time.timeScale = 0;
 
@@ -57,13 +60,21 @@ public class IngameGameManager : MonoBehaviour
         else
         {
             gameOverUI.gameObject.SetActive(false);
-            //ingameUI.gameObject.SetActive(true);
             //Keep Going Until Player die
         }
 
         textHP.text = playerHP.ToString() + " : HP";
     
     }
+
+    #region Ads
+    
+    private void ShowAds()
+    {
+        AdsController.VideoAd();
+    }
+
+    #endregion
 
 
     void TopScore()
@@ -84,6 +95,7 @@ public class IngameGameManager : MonoBehaviour
 
         if (togglePauseMenu == true)
         {
+            Invoke("ShowAds", 0f);
             pauseMenuUI.gameObject.SetActive(true);
             //ingameUI.gameObject.SetActive(false);
             Time.timeScale = 0;

@@ -23,6 +23,12 @@ public class ObstacleSpawner : MonoBehaviour
     void Start()
     {
         timer = Random.Range(3, 8);
+
+        foreach (Transform child in transform)
+        {
+            Debug.Log(child.name);
+        }
+
     }
 
     // Update is called once per frame
